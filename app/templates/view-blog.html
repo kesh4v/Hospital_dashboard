@@ -1,0 +1,20 @@
+{% extends "doctor_base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 my-4 mx-auto">
+            <h2>{{blog.title}}</h2>
+            {% if blog.image != "" %}
+                <img src="{{blog.image.url}}" alt="">
+            {% endif %}
+            <h5>{{blog.category.cat_name}}</h5>
+            <p class="small">{{blog.summary}}</p>
+            <p>{{blog.content}}</p>
+            <a href="{% url 'edit-blog' blog.id %}" class="btn btn-info">Edit</a>
+            <a href="{% url 'delete-blog' blog.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'publish-blog' blog.id %}" class="btn btn-success">Published</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

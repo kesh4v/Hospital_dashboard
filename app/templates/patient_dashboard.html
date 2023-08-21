@@ -1,0 +1,38 @@
+{% extends "patient_base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-lg-7 mx-auto">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-primary mt-2" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
+            {% endif %}
+            <h3 class="text-center text-decoration-underline">{{request.user.user_type}} Panel</h3>
+            <table class="table mt-5">
+                <tr>
+                    <th>Name</th>
+                    <td>{{request.user.first_name}} {{request.user.last_name}}</td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td>{{request.user.username}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{request.user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{request.user.address}}, {{request.user.city}}, {{request.user.state}}, {{request.user.pin}}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doctors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary">
+      <div class="container">
+          <a href="" class="navbar-brand">Doctor</a>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a href="{% url 'doctor' %}" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a href="{% url 'blog-editor' %}" class="nav-link">Blog Editor</a>
+              </li>
+              <li class="nav-item">
+                  <a href="{% url 'my-blogs' %}" class="nav-link">My Blogs</a>
+              </li>
+              <li class="nav-item">
+                  <a href="{% url 'all-blogs' %}" class="nav-link">All Blogs</a>
+              </li>
+              <li class="nav-item">
+                  <form action="{% url 'homepage' %}" method="post">
+                      <button type="submit" class="btn btn-sm mt-1 ms-4 btn-danger">LogOut</button>
+                      {% csrf_token %}
+                  </form>
+              </li>
+          </ul>
+      </div>
+  </nav>
+    
+    {% block content %}{% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

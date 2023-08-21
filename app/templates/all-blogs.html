@@ -1,0 +1,43 @@
+{% extends "patient_base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-4">
+        <div class="col-lg-3">
+            <div class="list-group">
+                <a href="{% url 'all-blogs' %}" class="list-group-item list-group-item-action active">All Category</a>
+                {% for category in categories %}
+                <a href="{% url 'cat-filter' category.id %}" class="list-group-item list-group-item-action">{{category.cat_name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <h4>Published Blogs by all Doctor</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Summary</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for blog in blogs %}
+                    <tr>
+                        <td>{{blog.id}}</td>
+                        <td>{{blog.title}}</td>
+                        <td>{{blog.category.cat_name}}</td>
+                        <td>{{blog.summary|truncatechars:20 }}</td>
+                        <td>
+                            <a href="{% url 'blog-details' blog.id %}" class="btn-success btn btn-sm">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "doctor_base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-4 mx-auto">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Summary</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for blog in blogs %}
+                    <tr>
+                        <td>{{blog.id}}</td>
+                        <td>{{blog.title}}</td>
+                        <td>{{blog.category.cat_name}}</td>
+                        <td>{{blog.summary|truncatechars:50 }}</td>
+                        <td>{% if blog.status == False %}Draft{% else %}Published{% endif %}</td>
+                        <td>
+                            <a href="{% url 'view-blog' blog.id %}" class="btn-success btn btn-sm">View</a>
+                            <a href="{% url 'edit-blog' blog.id %}" class="btn-info btn btn-sm">Edit</a>
+                            <a href="{% url 'delete-blog' blog.id %}" class="btn-danger btn btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

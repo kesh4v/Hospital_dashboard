@@ -1,0 +1,17 @@
+{% extends "patient_base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 my-4 mx-auto">
+            <h2>{{blog.title}}</h2>
+            {% if blog.image != "" %}
+                <img src="{{blog.image.url}}" alt="">
+            {% endif %}
+            <h5>{{blog.category.cat_name}}</h5>
+            <p class="small">{{blog.summary}}</p>
+            <p>{{blog.content}}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
