@@ -1,4 +1,4 @@
-from typing import Any
+# from typing import Any
 from django import http
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -9,6 +9,7 @@ from django.contrib import messages
 
 class BaseView(View):
     def dispatch(self, request, *args, **kwargs):
+        # print(request.path.split("/"))
         if not request.user.is_authenticated:
             return redirect("login")
         
@@ -22,7 +23,6 @@ class BaseView(View):
                 return redirect("patient")
 
         return super().dispatch(request, *args, **kwargs)
-
 
 # Create your views here.
 
